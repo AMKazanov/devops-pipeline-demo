@@ -27,7 +27,7 @@ jobs:
         with:
           context: ./app
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.IMAGE_NAME }}:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/devops-fastapi:latest
 
       - name: Verify image pushed
-        run: docker pull ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.IMAGE_NAME }}:latest
+        run: docker pull ${{ secrets.DOCKERHUB_USERNAME }}/devops-fastapi:latest
