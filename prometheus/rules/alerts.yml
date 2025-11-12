@@ -1,0 +1,11 @@
+groups:
+  - name: ContainerAlerts
+    rules:
+      - alert: HighContainerCPU
+        expr: rate(container_cpu_usage_seconds_total{container_label_com_docker_compose_service!=""}[1m]) * 100 > 1
+        for: 30s
+        labels:
+          severity: warning
+        annotations:
+          summary: "Высокая загрузка CPU в контейнере"
+          description: "Контейнер {{ $labels.container_label_com_docker_compose_service }} использует больше 1% CPU ({{ $value }}%)"
